@@ -15,3 +15,5 @@ if [ $? -eq 0 ]; then
 else
     echo "Erro na compilação."
 fi
+
+rm -rf ./$OUTPUT

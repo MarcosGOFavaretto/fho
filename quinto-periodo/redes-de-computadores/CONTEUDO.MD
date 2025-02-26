@@ -82,3 +82,80 @@ Para a classificação das redes é considerado o tipo de conexão e a amplitude
 - WAN (Wide Area Network): abrange o espaço de um país.
 
 A internet é a conexão entre as "ANs", em ordem decrescente de tamanho geográfico.
+
+---
+
+# Aula 2 - 25/02/2025
+## Modelo de Referência OSI (ISO 7498)
+- É um modelo de referência que dita algumas regras (padrões) a respeito da comunicação entre dispositivos de diferentes tecnologias, hardware e softwares.
+
+![modelo osi](image-5.png)
+![types of attaks at osi layers](image-7.png)
+
+> Das camadas 1 a 3, estamos tratando de hardwares.
+> O TCP/IP é uma implementação das camadas OSI.
+
+### Camada Física
+- Responsável pela transmissão dos _bits_ através do meio.
+- É a camada que faz a leitura dos pulsos no meio de transmissão, como os do cabo de rede.
+- Tópicos envolvidos:
+    - Topologia (estudada na aula passada);
+    - Meios de transmissão (estudada na aula passada);
+    - Sentido de transmissão (simples, half-duplex e full-duplex);
+    - Sincronismo;
+    - Dentre outros.
+
+### Camada de Enlace
+- É a camada que lida com o tráfego de quadros (grupo de bits) transmitidos.
+> Ela une alguns bits e grupos, chamadas de quadros ou frames.
+- Nela, também é determinada as formas de controle de acesso ao meio de transmissão.
+- Os dados nesta camada ainda são desfigurados.
+- Ela determina, através de um bit de controle, se a comunicação entre o receptor e o emissor está corrompida ou não. Caso o bit de controle não seja recebido por uma das partes, ela solicita o valor novamente ao emissor.
+- Tópicos envolvidos:
+    - Controle de acesso ao meio: token, CSMA, CSMA/CD, etc.
+    - Técnicas de controle de erros: paridade, check sum, CRC, etc.
+
+> Um CRC é um mecanismo de detecção de erro comumente usado em redes de computador e de armazenamento para identificar dados alterados ou corrompidos durante a transmissão. - Cisco.
+
+### Camada de Rede
+- Padroniza e define os endereços das máquians da rede de coputadores.
+- Gere o tráfego e rotas da rede.
+
+### Camada de Transporte
+- Transição (conversão) entre o software e o hardware.
+- Abstrai a evolução dos hardwares para não afetar as camadas superiores.
+- Valida se a informação recebida ou enviada está completa, antes ou após o empacotamento para transmissão.
+
+### Camada de Sessão
+- Permite que usuários possam estabelecer sessões entre as máquinas da rede.
+- Nela, também é tratada a etapa de sincroninismo da comunicação, caso tenha havido alguma oscilação no processo.
+- Gerenciamento de atividades (transações).
+
+### Camada de Apresentação
+- E uma camada de tradução dos dados, chamada de codificação, para o uso da próxima camada.
+- Realiza uma criptografia básica do dado.
+- Compacta os dados.
+
+### Camada da Aplicação
+- Esta camada oferece o acesso as aplicações que estão sendo executadas nos computadores ligados na rede.
+
+### Exemplo prático
+> Conteúdo retirado do [GeekForGeeks](https://www.geeksforgeeks.org/open-systems-interconnection-model-osi).
+
+Let us suppose, Person A sends an e-mail to his friend Person B.
+
+Step 1: Person A interacts with e-mail application like Gmail, outlook, etc. Writes his email to send. (This happens at Application Layer).
+
+Step 2: At Presentation Layer, Mail application prepares for data transmission like encrypting data and formatting it for transmission.
+
+Step 3: At Session Layer, there is a connection established between the sender and receiver on the internet.
+
+Step 4: At Transport Layer, Email data is broken into smaller segments. It adds sequence number and error-checking information to maintain the reliability of the information.
+
+Step 5: At Network Layer, addressing of packets is done in order to find the best route for transfer.
+
+Step 6: At Data Link Layer, data packets are encapsulated into frames, then MAC address is added for local devices and then it checks for error using error detection.
+
+Step 7: At Physical Layer, Frames are transmitted in the form of electrical/ optical signals over a physical network medium like ethernet cable or WiFi.
+
+After the email reaches the receiver i.e. Person B, the process will reverse and decrypt the e-mail content. At last, the email will be shown on Person B email client.

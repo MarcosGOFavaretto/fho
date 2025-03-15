@@ -118,7 +118,7 @@ A internet é a conexão entre as "ANs", em ordem decrescente de tamanho geográ
 > Um CRC é um mecanismo de detecção de erro comumente usado em redes de computador e de armazenamento para identificar dados alterados ou corrompidos durante a transmissão. - Cisco.
 
 ### Camada de Rede
-- Padroniza e define os endereços das máquians da rede de coputadores.
+- Padroniza e define os endereços das máquinas da rede de coputadores.
 - Gere o tráfego e rotas da rede.
 
 ### Camada de Transporte
@@ -159,3 +159,81 @@ Step 6: At Data Link Layer, data packets are encapsulated into frames, then MAC 
 Step 7: At Physical Layer, Frames are transmitted in the form of electrical/ optical signals over a physical network medium like ethernet cable or WiFi.
 
 After the email reaches the receiver i.e. Person B, the process will reverse and decrypt the e-mail content. At last, the email will be shown on Person B email client.
+
+---
+
+# Aula 3 - 11/03/2025
+
+## Modelos TCP/IP
+- Ele é a implementação do modelo de referência OSI.
+- Dentro das camadas do TCP/IP, cada protocolo tem a sua porta padrão por convenção. Exemplo: SMTP: 25 ou 587.
+- O modelo é formado por quatro camadas.
+![alt text](image-6.png)
+
+> Protolocos por camada  
+> ![alt text](image-9.png)
+
+> Exemplo prático apresentado pelo professor
+>   - Aplicação: dado bruto que será transmitido na rede.
+>   - Transporte: o dado será encapsulado com os dados das portas do protocolo que será usado (TCP ou IP).
+>   - Rede: onde os dados serão encapsulados novamente, com os endereços IP do emissor e receptor.
+>   - Enlace: onde será feito o encapsulamento com o endereço MAC, para a transmissão.
+
+### Aplicação
+Nesta camada estão as aplicações que serão utilizadas pelo usuário para realizar a comunicação. Elas fazem o uso das camadas para a comunicação em rede.
+
+### Transporte
+- É a camada responsável pela transferência de dados entre duas máquinas.
+- A camada de transporte oferece para o nível de aplicação um conjunto de funções e procedimentos para o acesso ao sistema de comunicação de modo a permitir a criação e a utilização de aplicações de forma independente da implementação da rede. As interfaces dos sistemas operativos, como o socket ou TLI (Unix) e Winsocket (Windows) fornecem um conjunto de funções-padrão para permitir tal acesso (driver da placa de rede).
+- Principais protocolos desta camada: UDP (não orientada a conexão) e TCP (orientada a conexão).
+
+* TCP (Transmission Control Protocol)
+    - Controla o fluxo para que não hajam congestionamentos na comunicação, refaz a transmissão de datagramas falhos e faz a ordenação dos pacotes que foram transmitidos.
+    - Usamos ele quando precisamos garantir que a informação chegará completa no destino.
+    - O protocolo faz o uso do bit de verificação para saber se o dado está completo ou não.
+
+* UDP (User Datagram Protocol)
+    - Não controla fluxo.
+    - Não faz o reenvio em caso de falhas.
+    - Não realiza a ordenação dos dados.
+    - Protocolo mais rápido, devido ao fato de não haver validação do dado estar completo.
+    - O Skype é um exemplo que implementa o uso deste protocolo.
+
+### Internet
+- Responsável pelas permissões do envio dos pacotes e garantia de que os dados cheguem ao destino final.
+- Realiza o roteamento entre os equipamentos da rede.
+- Protocolos: IP e ICMP.
+
+* IP (Internet Protocol)
+    - Realiza roteamento e endereçamento de pacotes de dados para que eles possam viajar pelas redes e chegar ao destino correto.
+    - Ele atribui um endereço exclusivo, dentro da rede, para cada equipamento, a fim de que ele possa ser encontrado, para completar o processo de comunicação.
+    - Utiliza 32 bits para representar o endereço da máquina, de acordo com o IPv4.
+
+* ICMP (Internet Control Message Protocol)
+    - Utilizado para determinar se o host está acessível.
+
+> O comando `ping` utiliza o protocolo ICMP para verificar se um host está disponível. Ao utilizá-lo, chegamos até a segunda camada do TCP.
+> ```
+> C:\Users\ARS_USER_B10L1_10>ping 172.20.51.178
+> 
+> Disparando 172.20.51.178 com 32 bytes de dados:
+> Resposta de 172.20.51.178: bytes=32 tempo=1ms TTL=128
+> Resposta de 172.20.51.178: bytes=32 tempo=1ms TTL=128
+> Resposta de 172.20.51.178: bytes=32 tempo=1ms TTL=128
+> Resposta de 172.20.51.178: bytes=32 tempo=1ms TTL=128
+> 
+> Estatísticas do Ping para 172.20.51.178:
+>   Pacotes: Enviados = 4, Recebidos = 4, Perdidos = 0 (0% de
+>             perda),
+> Aproximar um número redondo de vezes em milissegundos:
+>     Mínimo = 1ms, Máximo = 1ms, Média = 1ms
+> ```
+
+> Com o Wireshark, podemos analisar todo o conteúdo que entra e sai do computador.
+> Exemplo de um ping que foi feito na minha máquina no laboratório:
+> ![alt text](image-8.png)
+
+### Enlace
+TODO
+
+> [Indicação do professor](https://www.youtube.com/watch?v=HNQD0qJ0TC4&pp=ygUHTklDSy5CUg%3D%3D).

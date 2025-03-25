@@ -43,15 +43,15 @@ Algumas referências acadêmicas (com artigos científicos, etc):
 É um conjunto de atividades com tempo determinado, destinada a produzir um produto ou serviço.
 
 ### Projeto vs. Processo
-![diferença entre projeto e processo](image.png)
+![diferença entre projeto e processo](imagens/image.png)
 
 ### Ciclo de vida
-![ciclo de vida de um projeto](image-1.png)
-![alt text](image-2.png)
+![ciclo de vida de um projeto](imagens/image-1.png)
+![alt text](imagens/image-2.png)
 
 A ideia da segunda imagem é demonstrar que as etapas do projeto coexistem ao mesmo tempo. Por exemplo, o planejamento não termina antes de que o desenvolvimento seja iniciado.
 
-![alt text](image-3.png)
+![alt text](imagens/image-3.png)
 
 ### Áreas do gerenciamento de projetos
 
@@ -67,20 +67,20 @@ A ideia da segunda imagem é demonstrar que as etapas do projeto coexistem ao me
 - **Partes interessadas**: são as pessoas interessadas diretamente no resultado do projeto.
 
 ### Tecnologias
-![alt text](image-4.png)
+![alt text](imagens/image-4.png)
 
 ### Etapas da criação de jogos
 > Imagens retiradas da apresentação do professor.
-> ![alt text](image-5.png)
+> ![alt text](imagens/image-5.png)
 > 
-> ![alt text](image-6.png)
+> ![alt text](imagens/image-6.png)
 > 
-> ![alt text](image-7.png)
+> ![alt text](imagens/image-7.png)
 > 
-> ![alt text](image-8.png)
+> ![alt text](imagens/image-8.png)
 > 
-> ![alt text](image-9.png)
+> ![alt text](imagens/image-9.png)
 > 
-> ![alt text](image-10.png)
+> ![alt text](imagens/image-10.png)
 > 
 

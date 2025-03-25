@@ -47,29 +47,29 @@ Contrária à primeira, as não determiníticas não possuem controle de tempo, 
 Todos os dispositivos recebem a informação que era destinada à um dos dispositivos, dado que estão interligados pelo mesmo cabo. O dispositivo ao qual a informação não é o destino, ignora os pacotes recebidos.
 A desvantagem é a lentidão, segurança e fragilidade da rede, dado que o rompimento em qualquer local do cabo, tornará todos os dispositivos offline.
 
-![topologia barramento](image.png)
+![topologia barramento](imagens/imagens/image.png)
 
 ### Estrela
 Nesta topologia, os dispositivos da rede são interligados em um nó central.
 A vantagem é que os dispositivos são independentes, porém, um problema no nó central pode parar a rede toda.
 
-![topologia estrela](image-1.png)
+![topologia estrela](imagens/imagens/image-1.png)
 
 ### Anel
 Cada dispositivo é interligado com outros dois dispositivos. A vantagem é que um dispositivo será isolado da rede somente se a comunicação com os dois dispositivos falhar.
 
-![](image-2.png)
+![](imagens/image-2.png)
 
 ### Estrela estendida
 É uma evolução da topologia estrela, com vários nós centralizadores, que por si, são centralizados em outro nó.
 
-![](image-3.png)
+![](imagens/image-3.png)
 
 ### Topologia completa
 Por fim, na topologia completa, todos os nós são interligados entre si.
 A comunicação é mais rápida e direta, porém, é uma topologia que apresenta maiores custos de desenvolvimento e manutenção.
 
-![](image-4.png)
+![](imagens/image-4.png)
 
 ### Exemplo prático
 Na FHO, os laboratórios possuem a topologia estrela. Entre os laboratórios dos prédios, temos a estrela estendida. Entre os prédios e o servidor central, temos a topologia anel.
@@ -89,14 +89,14 @@ A internet é a conexão entre as "ANs", em ordem decrescente de tamanho geográ
 ## Modelo de Referência OSI (ISO 7498)
 - É um modelo de referência que dita algumas regras (padrões) a respeito da comunicação entre dispositivos de diferentes tecnologias, hardware e softwares.
 
-![modelo osi](image-5.png)
-![types of attaks at osi layers](image-7.png)
+![modelo osi](imagens/image-5.png)
+![types of attaks at osi layers](imagens/image-7.png)
 
 > Das camadas 1 a 3, estamos tratando de hardwares.
 > O TCP/IP é uma implementação das camadas OSI.
 
 ### Camada Física
-- Responsável pela transmissão dos _bits_ através do meio.
+- Responsável pela transmissão dos _bits_ através do meio.ls
 - É a camada que faz a leitura dos pulsos no meio de transmissão, como os do cabo de rede.
 - Tópicos envolvidos:
     - Topologia (estudada na aula passada);
@@ -168,10 +168,10 @@ After the email reaches the receiver i.e. Person B, the process will reverse and
 - Ele é a implementação do modelo de referência OSI.
 - Dentro das camadas do TCP/IP, cada protocolo tem a sua porta padrão por convenção. Exemplo: SMTP: 25 ou 587.
 - O modelo é formado por quatro camadas.
-![alt text](image-6.png)
+![alt text](imagens/image-6.png)
 
 > Protolocos por camada  
-> ![alt text](image-9.png)
+> ![alt text](imagens/image-9.png)
 
 > Exemplo prático apresentado pelo professor
 >   - Aplicação: dado bruto que será transmitido na rede.
@@ -231,7 +231,7 @@ Nesta camada estão as aplicações que serão utilizadas pelo usuário para rea
 
 > Com o Wireshark, podemos analisar todo o conteúdo que entra e sai do computador.
 > Exemplo de um ping que foi feito na minha máquina no laboratório:
-> ![alt text](image-8.png)
+> ![alt text](imagens/image-8.png)
 
 ### Enlace
 TODO

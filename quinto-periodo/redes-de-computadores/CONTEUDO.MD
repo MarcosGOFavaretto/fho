@@ -237,3 +237,103 @@ Nesta camada estão as aplicações que serão utilizadas pelo usuário para rea
 TODO
 
 > [Indicação do professor](https://www.youtube.com/watch?v=HNQD0qJ0TC4&pp=ygUHTklDSy5CUg%3D%3D).
+
+---
+
+# Aula 4 - 18/03/2025
+
+<TODO>
+
+- Protocolos: Ethernet, SFP, 1000 base x e 802.11 (a, b, g, n e ac).
+
+---
+
+# Aula 5 - 25/03/2025 - Protocolos da camada de Internet do TCP/IP
+[Como funciona a Internet? Parte 2: Sistemas Autônomos, BGP, PTTs.](https://www.youtube.com/watch?v=C5qNAT_j63M&list=PLk5G8sJqhL_lNcPdhzVUBb_frxI5jnf7G&index=2)
+[Introdução ao roteamento de pacotes IP](https://www.youtube.com/watch?v=y9Vx5l-th9Y)
+
+## Sistemas Autônomos
+Os sistemas autônomos são as grandes redes que, combinada aos outros sistemas autônomos, formam a internet.
+![sistemas autônomos](imagens/image-12.png)
+
+Esses sistemas se ligam com base em acordos comerciais, entre empresas e países, por exemplo.
+
+> "A internet é a ligação de várias WANs".
+
+## Protocolos de roteamento da camada de rede/internet
+Os protocolos são separados pelo tipo da rede em questão.
+
+### ISIS
+<TODO>
+
+### EGP
+- Utilizado para a comunicação entre os ASes.
+
+### BGP
+- Cria uma tabela que lista as rotas para interligar os sistemas autônomos (redes).
+- Utilizado para a comunicação entre os ASes.
+
+### ICMP
+- Utilizado para determinar se o host está acessível.
+
+### RIP
+Utilizado para o roteamento de roteadores de borda (aquele que fica na provedora de internet). Baseia-se no algoritmo vetor-distância.
+
+### OSPF
+É um protocolo para o roteamento dinâmico entre os roteadores de borda (assim como o RIP), porem, utiliza sempre o caminho mais curto. Utiliza o algoritmo de Dijkstra.
+
+## Protocolos da camada de aplicação
+### DHCP
+Este protocolo dita a configuração dinâmica de endereços IPs. Por meio do serviço de DHCP, que implementa o protocolo, é atribuído para cada equipamento participante da rede, um endereço único (dentro da rede) de IP.
+O serviço do DHCP fica hospedado em um servidor, onde utilizamos o recurso.
+
+A imagem a seguir mostra o procedimento.
+![alt text](imagens/image-10.png)
+
+### DNS
+Ele é responsável por resolver os domínios, determinando o endereço IP do serviço que está sendo acessado.
+[Como funciona a Internet? Parte 3: DNS](https://www.youtube.com/watch?v=ACGuo26MswI).
+
+> No endereço `fho.edu.br`, está oculto o "." no final do endereço. Na resolução do DNS, cada servidor redireciona a resolução, da esquerda para a direita, para outro servidor que contem a informação
+
+### FTP/SFTP
+São protocolos para transferência de arquivos.
+
+### SSH
+Protocolo para o acesso à prompts de comando remotos.
+
+### RDP
+Protocolo de acesso remoto para os ambientes Windows.
+
+### SNMP
+É um protocolo utilizado para o monitoramento do equipamento de redes.
+
+### IMAP
+Protocolo para o recebimento e-mail.
+
+### POP3
+Semelhante ao IMAP, porém, o recebimento é feito através do download dos e-mails do servidor para a máquina do usuário.
+
+### SMTP
+Protocolo para o envio de e-mails.
+
+> ![alt text](imagens/image-12.png)
+
+### HTTP
+Protocolo utilizado para a transmissão de hipertexto e hipermídia.
+
+### HTTPS
+Este protocolo fornece a transmissao de hipertexto e hipermidia tambem, porém, utiliza criptografia.
+
+### NTP
+Utilizado para a sincronização de data e hora nos equipamentos da rede.
+
+## Protocolos de enlace
+### Ethernet
+protoclo de conexão que garante como os hardwares se comunicam através do meio físico.
+
+### ARP
+Resolve o IP com base no MAC.
+
+### PPP
+<TODO>

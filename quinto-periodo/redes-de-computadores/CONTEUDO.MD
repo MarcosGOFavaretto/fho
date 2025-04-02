@@ -337,3 +337,20 @@ Resolve o IP com base no MAC.
 
 ### PPP
 <TODO>
+
+---
+
+# Aula 6 - 01/04/2025 - 
+
+## Multiplexação de sinais
+
+A multiplexação de sinais é a transmissão de informações simultâneas por um mesmo canal. Neste cenário, as informações que precisam chegar ao destinatário são segmentadas, e transmitidas juntas.
+
+![alt text](https://gammak.com.br/wp-content/uploads/2024/02/WDM-demonstracao.gif)
+
+## NTP
+Como citado anteriormente, o NTP é responsável pela sincronização de data e hora entre equipamentos na rede. O Brasil possui seu próprio servitor, o NTP.br.
+[Vídeo da NIC.BR](https://www.youtube.com/watch?v=hyCrd0x2yGg)
+
+## Governança
+[Vídeo NIC.BR](https://www.youtube.com/watch?v=ZYsjMEISR6E)

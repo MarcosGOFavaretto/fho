@@ -354,3 +354,129 @@ Como citado anteriormente, o NTP é responsável pela sincronização de data e 
 
 ## Governança
 [Vídeo NIC.BR](https://www.youtube.com/watch?v=ZYsjMEISR6E)
+
+---
+
+Aula 7 - 08/04/2025 - Revisão (correção) dos exercícios
+
+1) Explique as quatro principais topologias de redes
+- Estrela
+- Estrela estendida
+- Anel
+- Barramento: não é viável pois permite a ocorrência de muitos conflitos na rede.
+- Completa: não é viável de implementar pois o custo é muito alto. Nesta topologia, todas as máquinas são ligadas a todas as máquinas.
+
+2) Para se ter acomunicação em redes de computadores do que precisamos? Explique cada um dos elementos.
+- Emissor: são computadores, tablets, smartphones, smarttv, switches.
+- Receptor: são computadores, tablets, smartphones, smarttv, switches.
+- Canal de comunicação: por onde a informação e transmitida, como cabo de redes, rádio, etc.
+- Protocolo de comunicação: é o acordo entre o emissor e receptor sobre como será transmitida a informação.
+
+3) Quais os tipos de redes que existe? Explique cada um deles.
+- P2P: rede ponto-a-ponto, em que dois dispositivos se comunicam diretamente para a troca da informação. Um exemplo é o uTorrent.
+- Cliente-servidor: neste tipo, a comunicação é intermediada através de um servidor, que irá fornecer os recursos solicitados para os clientes da rede. Exemplo: ao acessar o YouTube, a Google é o servidor, e o nosso smartphone é o cliente.
+
+4) Explique como é estruturada a internet.
+- LAN: rede local da nossa casa.
+- MAN: redes que abrangem as cidades.
+- WAN: redes que abrangem os continentes.
+A internet são várias WANs, MANs e LANs conectadas.
+
+5) Cite pelo menos uma característica importante de cada uma das camadas do modelo OSI.
+Respondida na 9.
+> Essa vai cair na prova!!!!
+
+6) Explique como é feito o encapsulamento do TCP/IP.  
+O TCP/IP é formado por quatro camadas. Através dele, a informação é encapsulada para ser transmitida.
+Cada camada corresponde a uma parte no processo de transformação da informação em bits.
+Ele funciona através de uma pilha de protocolos que são utilizados para encapsular as informações, para que ela seja transmitida na rede, em 0 e 1, para que seja remontada no receptor.
+
+7) Na camada de Enlace do modelo OSI, explique como é o funcionamento dela.  
+Ela é a segunda camada do modelo OSI. A camada física, que é a primeira, trabalha com a transmissão dos dados, em bits. Já a camada de enlace, trabalha com frames (um conjunto de bits recebidos pela camada física).
+
+8) No modelo TCP/IP temos uma camada que é repsonsável pelo envio da informação, qual é essa camada, e quais são os tipos de protocolos de envio de informações? Explique cada um deles.  
+É a camada de transporte. Os protocolos são TCP e UDP:
+- TCP: é o protocolo seguro do envio de informações, dado que ele aguarda a confirmação de que a informação foi recebida completamente, sem perdas.
+- UDP: neste protocolo, não há a verificação se a informação foi recebida completamente.
+
+> Essa vai cair na prova.
+
+9) Explique as 7 camadas do modelo OSI.  
+(Listamos sempre de baixo para cima)
+    1. Física: camada responsável por transmitir os bits na rede.
+    2. Enlace: responsável por agrupar os bits em frames.
+    3. Rede: responsável por definir as rotas de transmissão (roteamento) da informação. No sentido contrário das camadas, ela é responsável por averiguar se o dispositivo é o destino da informação
+    4. Transporte: irá averiguar o tamanho dos frames para a camada de redes para que o roteamento possa ser feito na camada 3. Ela faz a conversão de software para hardware (e vice-versa).
+    5. Sessão: responsável por estabelecer a sessão entre o emissor e o receptor.
+    6. Apresentação: responsável por criptografia e compressão da informação.
+    7. Aplicação: camada de acesso às aplicações (softwares) que irão compartilhar as informações na rede.
+
+10) Explique a relação do modelo OSI com o TCP/IP.  
+O modelo OSI é conceitual de redes, que serve de estudo.
+O modelo TCP/IP é uma implementação da camada OSI, baseada em uma pilha de protocolos.
+
+---
+
+1. Explique a diferença entre a camda de Rede e Transporte.  
+A camada de Redes é responsável por criar as rotas corretas para a transmissão dos pacotes.  
+A camada de transporte é responsável por converter as informações de software para hardware e verificar o tamanho máximo dos pacotes que podem ser transmitidos na rede.
+
+2. Explique como acontece a transformação da informação em bit segundo o modelo OSI.  
+Primeiramente, ocorre a compressão e criptografia da informação. Em seguida, ocorre a repartição da informação em frações cada vez menores, até que se chegue nos bits.
+
+3. Explique a camda de enlace de rede.  
+Esta camada é do TCP/IP, responsável por utilizar os protocolos para a transmissão das informações no formato de bits através do meio físico (cabo de rede, fibra óptica, wifi, etc.).
+
+4. Pensando no modelo OSI da camda 7 para a 1, qual é a primeira camada que trata do hardware? Explique ela.  
+Transporte: ela é a primeira camada que possui acesso ao hardware. Ela é responsável por fazer a conversão de software para hardware e determinar o tamanho máximo de bytes que podem ser transmitidos na rede.
+
+---
+
+1) Conforme a última aula, explique ao menos 1 protocolo de cada camada do modelo TCP/IP.  
+- Aplicação: RDP (protocolo d econexão remota à interfaces de dispositivos Windows, usa o TCP, na porta 3389), HTTPS (transferência de hipertexto mais segura, usa o TCP, porta 443), HTTP (transferência de hipertexto, usa o TCP, porta 80), SSH (protocolo de conexão remota a terminais, usa o TCP, porta 22) e SMTP (protocolo de envio de e-mails, usa o TCP, nas portas 25 e 587).
+- Transporte: TCP (há confirmação da chagada da informação) e UDP (não há a confirmação).
+- Internet ou Rede: OSPF (protocolo de roteamento inteligente, usa o algoritmo Dijkstra para buscar a melhor rota ), RIP (utilizado no roteamento estático entre roteadores), BGP (protocolo de roteamento entre ASes).
+- Físico ou enlace de rede: Ethernet (padrão do rj45), SFP (fibra óptica), PPP, PPPOe, 802.11 (rádio frequência).
+
+> Vai cair na prova!!!
+
+2) O protocolo SNMP é utilizado para qual finalidade, cite um exemplo da usa utilização.  
+Protocolo da camada de aplicação para o monitoramento de equipamentos da rede. Ele realiza a verificação dos dispositivos da rede para verificar se eles estão acessíveis. Utiliza o protocolo UDP, dado que não precisa aguardar o retorno para saber se a informação foi perdida, dado que a consulta é feita várias vezes. A porta padrão do SNMP é a 161.
+
+3) Com relação a protocolos da camada de roteamento, existe um protocolo que utiliza um algoritmo para encontrar a melhor rota, qual o nome dele, explique como ele funciona e qual topologia de rede comumente é utilizado.  
+OSPF. Ele utiliza o algoritmo de busca Dijkstra para encontrar a melhor rota na rede. A topologia de rede anel é comumente utilizada com este algoritmo, dado que ela permite que hajam dois caminhos para chegar ao destino, permitindo que o algoritmo escolha o mais rápido.
+
+> Vai cair na prova!!!
+
+4) Na camada de aplicação, é utilizado diversos protocolos, e cada um deles em sua porta padrão. Cite ao menos 3 protocolos, para que servem e qual a porta padrão dele.  
+- DNS: responsável por resolver IPs com base em domínios. Usa o TCP na porta 53.
+- NTP: responsável por fazer a sincronização de data e hora na rede. Usa o UDP na porta 123.
+
+> Vai cair na prova!!!
+
+5) O protocolo BGP é utilizado para roteamento, de qual forma?
+O BGP é utilizado para fazer o roteamento entre os ASes. O IGP faz o roteamento interno entre os ASes.
+
+6) Com base no modelo TCP/IP podemos ter protocolos da camada de acesso a rede, qual o padrão de protocolo de acesso a rede para comunicação de radio frequência utilizando 5 Ghtz? Explique.  
+802.11 ac, ela permite a comunicação com mais de 1 Gbps, embora forneça alcançe menor.
+
+7) Em uma rede existem protocolos como serviço, que se tornam essenciais em uma rede, para o seu funcionamento, cite ao menos um deles e explique.  
+- TCP: é o protocolo que possui confirmação da informação enviada.
+- DNS: é o protocolo que traduz o nome do domínio para IP. Usa o TCP na porta 53.
+- DHCP: é o protocolo que dissemina os endereços IPs na rede.
+
+8) No modelo TCP/IP existem dois principais protocolos de transporte, explique cada um deles, e de exemplo. Complemente mencionando um protocolo de aplicação que utiliza cada um deles.
+- TCP: envia a informação e aguarda a confirmação do recebimento. Um exemplo de utilização é o download de arquivos. Protocolos que usam o TCP: http, smtp, ftp, sftp.
+- UDP: envia a informação e não aguarda confirmação. Um exemplo são chamadas como pelo Whatsapp e Skype. Protocolos que usam o UDP: NTP, SNMP.
+
+---
+
+## Revisão da aula prática.
+
+- Tipos de cabo de redes: UTP e STP (possui blindagem).
+- Categorias dos cabos de rede: cat5 (máx 100 Mbps) e cat6 (máx 1Gbps)
+- Cabos de rede não podem exceder 100 metros.
+- Padrão de conectores: 568A e 568B. Existem dois padrões pois na comunicação ponto a ponto, o TX e o RX precisam ser invertidos. Quando um cabo possui uma ponta em cada um dos padrões, dizemos que ele está em crossover.
+- Padrão de fibra óptica: multimodo (MM), utilizada para curtas distâncias e cabeamentos externos entre construções. Possui o núcleo maior; monomodo (SM) utilizada para longas distâncias, como atravessar a cidade, por exemplo. Possui o núcleo menor.
+- Ativos de rede e tudo aquilo que necessita de energia elétrica para funcionar (como computadores). Passivos são os que não precisa (como cabo de rede e fibra óptica).
+- O HUB trabalha na camada 2 do modelo OSI, portanto, não sabe quem são os destinatários da informação. O Switch trabalha, pelo menos, na camada 3, dado que conhece o destinatário da informação.

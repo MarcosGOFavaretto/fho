@@ -357,7 +357,7 @@ Como citado anteriormente, o NTP é responsável pela sincronização de data e 
 
 ---
 
-Aula 7 - 08/04/2025 - Revisão (correção) dos exercícios
+# Aula 7 - 08/04/2025 - Revisão (correção) dos exercícios
 
 1) Explique as quatro principais topologias de redes
 - Estrela

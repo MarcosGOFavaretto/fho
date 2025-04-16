@@ -241,8 +241,122 @@ TODO
 ---
 
 # Aula 4 - 18/03/2025
+## Camada Física(1) - Meios de Transmissão
+A camada física é a camada mais baixa do modelo OSI e é responsável por definir os meios de transmissão de dados. Os meios de transmissão podem ser guiados ou não guiados. 
 
-<TODO>
+**Meios de transmissão guiados:**
+- Cabo coaxial: feito de um fio de cobre rígido
+- Par trançado: composto por quatro pares de fios de cobre trançados entre si
+- Fibra óptica: filamento fino e flexível, feito de sílica.
+
+### Cabo par trançado
+Os cabos UTP e STP são cabos de par trançado, utilizados para transmitir informações. A principal diferença entre os dois é que os cabos STP são blindados, enquanto os UTP não são.
+
+**Características dos cabos UTP:**
+- São usados para taxas de dados cada vez mais altas 
+- São comparativamente simples na sua conceção e correspondentemente finos e flexíveis 
+- A frequência de transmissão especificada é de 100 MHz
+
+**Características dos cabos STP:**
+- São usados em ambientes externos, onde os cabos são expostos aos elementos 
+- São usados em ambientes com alta interferência, como instalações industriais 
+- Podem melhorar bastante a taxa de sinalização em um dado esquema de transmissão 
+
+**Cabos UTPs:**
+O cabo CAT6 é superior ao CAT5e em termos de velocidade de transmissão e largura de banda. O CAT6 é indicado para redes domésticas que precisam de grandes volumes de dados.
+
+![](https://raw.githubusercontent.com/jpbortolin/FHO-Uniararas/refs/heads/main/Periodo5/Rede-de-Computadores/Images/image-9.png)
+
+> O CAT5e oferece desempenho significativamente superior sobre o velho padrão CAT5, incluindo velocidades mais rápidas em até 10 vezes e uma habilidade infinitamente superior de atravessar distâncias sem ser impactado por diafonia.
+
+> O cabo de rede não pode ultrapassar de 100m, pois prejudica a velocidade de transmissão de dados, podendo não entregar sua máxima velocidade. Sendo assim, o interessante é trabalhar com no máximo 90m de distância.
+
+**Conectores LC e SC:**
+Qual é a diferença entre os conectores LC e SC?
+Esta é uma das diferenças básicas entre esses dois conectores. O conector SC possui uma ponteira de 2,5 mm, enquanto o LC possui uma ponteira de 1,25 mm, que tem exatamente a metade do tamanho do SC.
+
+**Cabos de Fibra Óptica:**
+Fibra óptica é um filamento transparente que transmite dados por meio de pulsos de luz. É feita de vidro ou plástico e é utilizada em telecomunicações, redes de alta velocidade e monitoramento.
+As fibras ópticas são feitas de fibra de vidro e são usadas para transportar dados a longas distâncias através de sinais luminosos.
+
+- **Fibra ótica monomodo (SM)** e **multimodo (MM)** são dois tipos de fibras ópticas que se diferenciam pelo diâmetro do núcleo e pela forma como a luz se propaga.
+> A fibra monomodo (SM) é mais indicada para projetos com cabeamentos mais distantes, pois tem menor dispersão da luz e maior qualidade de sinal. A fibra multimodo (MM) é mais comum para redes internas, pois é mais fácil de instalar e manter.
+
+### Normas dos cabos e conectores
+A **TIA 568A** é uma norma que define a ordem dos fios em um conector RJ-45. Ela é utilizada em redes de computadores e está relacionada à telecomunicações.
+
+A norma **TIA 568B** é um padrão técnico que define como devem ser os cabos de telecomunicações em edifícios comerciais. Ela também especifica a ordem dos fios dentro do conector RJ-45.
+
+![](https://github.com/jpbortolin/FHO-Uniararas/blob/main/Periodo5/Rede-de-Computadores/Images/image-13.png)
+
+### Painéis
+**Voice Panel:**
+O Voice Panel é um painel de distribuição para sistemas de comunicação por voz utilizado nas salas de Telecomunicações para facilitar o espelhamento de blocos de conexão 110IDC. Em apenas 1U de Rack possibilita o espelhamento de até 50 portas para utilização de serviços de voz.
+
+![voicepanel](https://github.com/jpbortolin/FHO-Uniararas/blob/main/Periodo5/Rede-de-Computadores/Images/image-10.png)
+
+### Ativos e Passivos de Rede
+Ativos e passivos de rede são equipamentos que permitem a transferência de dados e sinais em uma rede de computadores. A diferença entre eles é que os ativos processam as informações, enquanto os passivos apenas as transportam. 
+
+**Ativos de rede**
+- São dispositivos inteligentes que analisam e decodificam dados 
+- São responsáveis por processar, rotear e controlar o fluxo de dados 
+- São capazes de gerar e receber dados, além de converter sinais eletrônicos ou ópticos 
+- São responsáveis pela comunicação entre computadores e servidores 
+- Exemplos: roteadores, hubs, switches, servidores, placas de rede, firewall 
+
+**Passivos de rede**
+- Transportam os dados, mas não interferem nas informações trafegadas 
+- Possibilitam a ligação entre as diversas partes de uma infraestrutura de rede 
+- Exemplos: conectores Rj45, tubo de polietileno, fontes de alimentação, réguas de alimentação e de distribuição, bastidores de rede, patch panels, calhas 
+
+**Patch Panel:**
+Um patch panel é um painel de hardware que permite conectar e gerenciar cabos de rede. É um componente fundamental em redes locais (LAN) e é comumente usado em data centers, salas de servidores e armários de telecomunicações. 
+
+**Principais características:** 
+- Organiza e gerencia cabos de rede
+- Permite conectividade flexível
+- É um ponto central para conectar vários dispositivos de TI
+- É um intermediário entre a infraestrutura de cabeamento e o equipamento de rede
+- Permite a interconexão entre dispositivos de rede, como switches, roteadores e servidores
+
+![](https://github.com/jpbortolin/FHO-Uniararas/blob/main/Periodo5/Rede-de-Computadores/Images/image-11.png)
+
+## Camada de Rede(3) - Dispositivos
+A camada 3 do modelo OSI usa protocolos como IP, IPsec, ICMP e NAT. A camada 3 é a camada de rede, que é responsável por rotear pacotes de dados entre redes.
+
+### Switch
+Um switch de rede, ou comutador, é um dispositivo que conecta vários dispositivos em uma rede. Ele permite que os dispositivos compartilhem informações e se comuniquem entre si. 
+
+![switch](https://github.com/jpbortolin/FHO-Uniararas/blob/main/Periodo5/Rede-de-Computadores/Images/image-12.png)
+
+**Como funciona:**
+- Os switches encaminham pacotes de dados de um dispositivo a outro 
+- Os switches podem operar na camada de enlace (OSI 2) ou na camada de rede (OSI 3) 
+- Os switches L2 utilizam o endereço MAC para enviar a informação
+
+### Modos de Transmissão de Dados
+Modos de Transmissão de Dados referente ao sentido: Simplex, Half-Duplex e Full-Duplex
+
+**Simplex**
+
+É o modo de transmissão em sentido único ou uniderecional, caracteriza-se em uma ligação na qual os dados circulam num só um sentido, ou seja do emissor para o receptor.
+
+Exemplos: Rádio, TV.
+
+**Half-Duplex**
+
+É o modo de transmissão em sentido duplo em função do tempo, não simultâneo. Assim, com este tipo de ligação, cada extremidade da ligação emite por sua vez.
+
+Exemplos: Walkie-talkies, Redes de computadores, Sistemas de telecomunicações, Redes Wi-Fi.
+
+**Full-Duplex**
+
+É o modo de transmissão em sentido duplo ou bidirecional simultâneo. Assim, cada extremidade da linha pode emitir e receber ao mesmo tempo, o que significa que a banda concorrida está dividida por dois para cada sentido de emissão dos dados.
+
+Exemplo: Celular.
+
+> As taxas de Tx (emissor/transmissor) e RX (receptor) referem-se a taxas de transmissão ou recepção de dados. Os dados TX referem-se à quantidade de dados transmitidos e os dados RX referem-se à quantidade de dados recebidos.
 
 - Protocolos: Ethernet, SFP, 1000 base x e 802.11 (a, b, g, n e ac).
 

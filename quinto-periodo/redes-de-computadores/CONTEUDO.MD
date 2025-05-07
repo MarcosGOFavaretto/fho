@@ -594,3 +594,52 @@ O BGP é utilizado para fazer o roteamento entre os ASes. O IGP faz o roteamento
 - Padrão de fibra óptica: multimodo (MM), utilizada para curtas distâncias e cabeamentos externos entre construções. Possui o núcleo maior; monomodo (SM) utilizada para longas distâncias, como atravessar a cidade, por exemplo. Possui o núcleo menor.
 - Ativos de rede e tudo aquilo que necessita de energia elétrica para funcionar (como computadores). Passivos são os que não precisa (como cabo de rede e fibra óptica).
 - O HUB trabalha na camada 2 do modelo OSI, portanto, não sabe quem são os destinatários da informação. O Switch trabalha, pelo menos, na camada 3, dado que conhece o destinatário da informação.
+
+# Aula X - 06/05/2025 - Roteadores de borda
+
+Comandos
+```
+Would you like to enter the initial configuration dialog? [yes/no]: no
+Enter
+> enable
+> configure terminal: inicia a configuração
+> interface FastEthernet 0/0: estamos indicando qual porta iremos configurar
+> ip address 192.168.0.1 255.255.255.0: configura o endereço IP e a máscara de rede para a porta.
+> no shutdown: liga a porta do router
+> exit: encerra a configuração da interface 0/0
+> interface FastEthernet 1/0
+> ip address 200.201.150.2 255.255.255.252
+> no shutdown
+> exit
+Would you like to enter the initial configuration dialog? [yes/no]: no
+Enter
+> enable
+> configure terminal
+> interface FastEthernet 0/0
+> ip address 10.0.0.1 255.0.0.0
+> no shutdown
+> exit
+> interface FastEthernet 1/0
+> ip address 200.201.150.1 255.255.255.252
+> no shutdown
+> exit
+ 
+-- Roteamento
+> enable
+> configure terminal
+> router rip
+> network 192.168.0.0
+> network 200.201.150.0
+> exit
+> exit
+> copy running-config startup-config: salva as configurações feitas no roteador, para que ao reiniciar o roteador, ele não perca as configurações.
+Enter
+> configure terminal
+> router rip
+> network 10.0.0.0
+> network 200.201.150.0
+> exit
+> exit
+> copy running-config startup-config
+Enter
+```

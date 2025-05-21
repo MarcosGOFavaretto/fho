@@ -643,3 +643,16 @@ Enter
 > copy running-config startup-config
 Enter
 ```
+-- OSPF
+
+```
+configure terminal
+router ospf 1
+network 192.168.3.0 0.255.255.255 area 0
+network 2.0.0.0 0.0.0.255 area 0
+network 3.0.0.0 0.0.0.255 area 0
+exit
+exit
+show ip route
+copy running-config startup-config
+```

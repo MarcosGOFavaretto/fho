@@ -656,3 +656,178 @@ exit
 show ip route
 copy running-config startup-config
 ```
+
+# Aula 14 - 27/05/2025 - Redes industriais
+## Palestrante
+- A palestra foi feita pelo Joel Rossi (CEH Master, ECES, ICS Scada, ISFS, ACADI-TI, IPOG, instrutor na EC-Council e PDPF), dono da One Thinking.
+
+## Nivelamento de conhecimento
+### Tipos de variáveis
+- A tabela de tipos de variáveis precisa ser decorada, com ênfase aos tipos que existem e seus respectivos tamanhos.
+- Por mais que o `boolean` seja a menor unidade em relação aos tipos de variáveis, ele precisa de `1 byte` para ser armazenado.
+- Representação do float na memória.
+![alt text](image.png)
+- É muito importante conhecer como os tipos de dados são representados ou interpretados, até mesmo para quando estamos fazeendo operações de `sniffing` em uma rede.
+### Conversão de unidades
+- É importante conseguirmos realizar as conversões entre decimal, binário, octal e hexadecimal.
+- O hexadecimal é o mais importante dos tipos, dado que os dados de baixo nível, como na memória, kernel e processador, são comumente representados em bytes (8 bits).
+### Tabela ASCII
+- Segundo o palestrante, a tabela ASCII deve ser memorizada. A necessidade desse conhecimento é permitir que, durante uma análise de protocolo, como o HTTP, possamos identificar dados que podem não fazer parte da mensagem transmitida.
+- As `string`, em máquinas de 32 bits possuem um byte a mais para serem representadas, para identificar que o texto foi encerrado. Exemplo: "Joel" é salvo como "J", "o", "e", "l", "0". Nas máquinas de 64 bits, são usados dois "00".
+### Big Endian and Little Endian
+- Indica a ordem que os bits são lidos.
+![alt text](image-1.png)
+-- TODO: Foto
+
+## Introdução a redes industriais
+- A indústria automobilística foi a principal precursora do desenvolvimento das redes industriais.
+- Contrário ao TI, os protocolos industriais costumam ser mais fechados.
+- As redes insdustriais servem para integrar os dispositivos de uma fábrica em uma única rede.
+
+> Analogia da linguagem. "O meio físico era o mesmo, mas o protocolo da camada 7 não era conhecida por vocês".
+
+### Camadas OSI
+- Modelo de referência.
+- Não oficialmente, podemos dizer que existe uma oitava: BIOS.
+
+> "As camadas 5, 6 e 7, na maioria dos protocolos, são idênticas".
+
+-- TODO: Foto
+-- TODO: Slide que mostra o encapsulamente e desencapsulamento.
+
+- Quando fazemos a análise do dado puro, conseguimos identificar todos os dados empacotados dentro dos bytes transferidos na rede.
+
+-- TODO: Comentário aos 07:10 referente a um cliente.
+
+- IEE 802: conjunto de padrões e normas para a camada física.
+- Enlace: É onde está presente a conexão entre dois pontos físico distintos. É o primeiro processamento em cima dos dados da camada 1.
+- Rede: TODO
+- Transporte: recebe os dados das camadas anteriores e as separam em segmentos. Aqui, o dado é enviada para cada uma das portas do protocolo.
+
+> TODO: Analogia do apartamento.
+
+- Sessão: efetua a conexão entre os serviços, permitindo acesso somente aos envolvidos na comunicação.
+- Apresentação: transforma e traduz os dados.
+- Aplicação: é a camada mais alta, responsável pela iteração entre o usuário e a aplicação no computador.
+- Na análise da rede, teremos a informação de qual porta está sendo usada, permitindo que tenhamos o acesso a qual protocolo está sendo usado. Por isso é importante saber as portas padrão de cada um deles.
+
+> "Mas está "pingando" no meu equipamento, mas ele não comunica. O ping trabalha com o protocolo ICMP, do IP, na camada de internet do TCP/IP, que está na camada de rede do OSI. o acesso a uma página, através do HTTP, está na camada de aplicação/apresentação/sessão da OSI, que é a aplicação do TCP/IP, que fica em camadas superiores à que o ICMP atua.
+
+- O palestrante citou o Cyber Kill Chain.
+
+### Historia
+- Os protocolos industriais começam a nascer na 3ª revolução industrial, em 1969.
+
+### Tipos de redes industriais
+- PROFINET: Equipamentos da SIEMENS
+- PROFIBUS
+- EtherNet/IP: não relacionado ao TCP/IP nem Ethernet.
+- Devicenet
+- CANopen
+- EtherCAT
+- ModbusControlNet
+
+### Comunicações seriais
+- Ao nível industrial, não temos um poder de processamento tão grande quando no setor de aplicações, dado que os equipamentos precisam ser bastante robustos, para serem resistentes aos diversos ambientes (temperatura, umidade, interferências, etc) que a indústrias oferecem.
+- Devido aos limites de recursos, temos diversos protocolos para a comunicação serial entre os dispositivos.
+- O dado é transmitido bit a bit, um de cada vez.
+- Precisa de pelo menos dois fios.
+- Até um filme pode ser transmitido no formato serial, apesar de demorar bastante.
+
+> "É uma tecnologia validada a mais de 40 anos, simples, fácil e barata."
+
+- A comunicação síncrona trabalha com um clock, que é um período que determina a velocidade que o dado será enviado.
+- Na comunicação assíncrona, a velocidade da transmissão varia, e precisa ser "combinada" entre todas as partes relacionadas no processo de comunicação
+
+-- TODO: slide da comparação de síncrono e assíncrono.
+
+- UART: -- TODO: slide
+- RS-232: norma da camada física criada em 1962 que indica como os conectores devem ser feitos.
+- RS-425: é a evolução do anterior. Focado em multidrop robusto. Amplamente utilizado na comunicação serial. Neste protocolo, a comunicação pode acontecer em até 32 dispositivos.
+
+-- TODO: slide de comparação.
+- Modbus: um dos primeiros da indústria, criada por quem hoje é a Schneider Electric.
+
+-- TODO: Slide. Definição e comparação com a OSI
+-- TODO: Slide da estrutura dos pacotes do modbus
+
+- O modbus RTU é mais rápido, dado que a estrutura dos pacotes ser menor.
+- DeviceNet: é uma rede industrial aberta da família CIP. Roda sobre o barramento CAN 2.0A. A alimentação e os dados estão presentes no mesmo cabo. Largura de banda limitada (máx. 500 kbps)
+
+-- TODO: slide da comparação do deviceNet.
+
+> O Joel mostrou na prática, através  do wireshark e uma interface modbus, os dados trafegados.
+
+### Máscara de rede
+- Serve para a identificação da rede que o destinatário pertence.
+> TODO: Exemplo da carta de convite do aniversário do filho.
+
+### Gateway
+
+-- TODO: minuto 33
+
+### NAT (Network Address Translator)
+- É uma técnica utilizada em redes de computadores para ...
+
+-- TODO: slide
+
+### DNS
+- Opera em TCP e UDP.
+
+### ARP
+
+### ICMP
+- Trabalha na camada 3
+- Usado principalmente para enviar mensagens de controle e de erro em reges IP.
+
+-- TODO: Flags do ICMP.
+
+### Protocolo IP
+- Responsável pelo endereçamento de dispositivos na rede.
+
+### TCP
+
+-- Slide
+
+> "Que porta que eu vou e para que porta que eu vou?"
+
+- As primeiras 1024 portas são destinadas ao windows.
+- Flags do TCP. Na área do control flags, temos algumas informações:
+    - SYN: solicita a comunicação com o destinatário.
+    - ACK: 
+    - FIN: 
+    - RST: Indica que a porta não está ativada.
+    - PSH: 
+    - URG: 
+
+- Three-way handshake
+--TODO: Slide
+
+### UDP
+- 
+
+## Protocolo EtherNet/IP
+- Trabalha em cima da stack TCP/IP.
+
+-- Slides
+
+## CIP
+- É um protocolo.
+- É uma linguagem comum para as operações industriais, como ligar motor, rotacionar X graus.
+
+## Profinet
+- permite real time, assíncrono e ? (TODO).
+- usa a stack tcp/ip
+- Atua nas camadas 6 e 7.
+- Quando operando em realtime, ignora os processos das camadas 5, 4 e 3.
+
+-- TODO: Slides.
+
+## Prática
+- CLP
+- IHM
+- Switch industrial
+- TAP: ferramenta para o `sniffing` do tráfego da rede ao nível binário.
+-- Foto
+
+> Não podemos simplesmente realizar o `sniffing` da rede simplesmente conectando um cabo de rede em um notebook e conectar ao switch, dado que ao nível de kernel, diversas informações são ocultas ou ignoradas.

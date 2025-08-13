@@ -3,6 +3,36 @@
 - Apresentação da disciplina.
 - Revisão geral.
 
+## Algoritmos
+É uma sequência de procedimentos computacionais que, dada uma entrada, devolve em uma saída esperada.
+
+## 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Aula 02 - 19/08/2025
 ## Objetivos
 - Tipo Abstrato de Dados e exercícios aplicados.

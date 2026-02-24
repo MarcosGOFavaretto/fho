@@ -1,0 +1,15 @@
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/bin/Debug/net8.0/PrimeiroProjeto
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/bin/Debug/net8.0/PrimeiroProjeto.deps.json
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/bin/Debug/net8.0/PrimeiroProjeto.runtimeconfig.json
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/bin/Debug/net8.0/PrimeiroProjeto.dll
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/bin/Debug/net8.0/PrimeiroProjeto.pdb
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/obj/Debug/net8.0/PrimeiroProjeto.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/obj/Debug/net8.0/PrimeiroProjeto.AssemblyInfoInputs.cache
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/obj/Debug/net8.0/PrimeiroProjeto.AssemblyInfo.cs
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/obj/Debug/net8.0/PrimeiroProjeto.csproj.CoreCompileInputs.cache
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/obj/Debug/net8.0/PrimeiroProjeto.sourcelink.json
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/obj/Debug/net8.0/PrimeiroProjeto.dll
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/obj/Debug/net8.0/refint/PrimeiroProjeto.dll
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/obj/Debug/net8.0/PrimeiroProjeto.pdb
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/obj/Debug/net8.0/PrimeiroProjeto.genruntimeconfig.cache
+/workspaces/fho/setimo-periodo/analise-e-projetos-orientados-a-objetos-i/aula1/PrimeiroProjeto/obj/Debug/net8.0/ref/PrimeiroProjeto.dll

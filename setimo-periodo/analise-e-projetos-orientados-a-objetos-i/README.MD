@@ -40,3 +40,34 @@ Onde:
 2. São os atributos.
 3. São os métodos.
 4. Linha que representa a relação entre as classes.
+
+Os sinais que antecedem os atributos ou métodos são usados para o encapsulamento daquele componete:
+* "+" indica que o atributo ou método é público.
+* "-" indica que o atributo ou método é privado.
+
+# 4. Pilares da orientação a objetos
+## 4.1. Encapsulamento
+
+É a maneira de expor ou não a manipulação da classe.
+
+> Por exemplo: uma classe que representa um usuário, deveríamos esconder a senha dele, e permitir apenas que o código que cria objetos dessa classe saiba se ele está autenticado ou não.
+
+## 4.2. Abstração
+
+Capacidade de "pegar" apenas o essencial da regra de negócio e expô-lo através de uma simplificação.
+
+> Exemplo: para dar partida em um carro, temos diversas etapas: aquecer o motor, girar o motor antes que ele entre em ignição, alimentar a câmara de combustão com combustível e oxigênio, etc. Quem deseja ligar o carro nao precisa se preocupar com todas essas etapas, dado que ele apenas pressiona um botão que irá, através de outros meios, realizar todas essas tarefas necessárias para que o carro ligue.
+
+## 4.3. Herança
+
+Na Orientação a Objetos (OO), classes podem herdar as outras, de forma a partir de uma classe genéria (como "Pessoa") e chegar a classes mais especialistas (como "PessoaFisica"). A intenção deste princípio é a reutilização de código, concentração de regras e atributos genéricos para diferentes entidades que envolvem a aplicação.
+
+> Ex:   Pessoa
+>           |---Aluno
+>           |---Professor
+
+## 4.4. Polimorfismo
+
+Diferentes objetos respondem de diferentes formas dado um mesmo método.
+
+> Por exemplo, as classes Cachorro e Papagaio determinam comportamentos diferentes para o processo de andar. São diferentes formas para a mesma ação.

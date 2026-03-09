@@ -1,3 +1,7 @@
 *.out
 tasks.json
 settings.json
+
+# Build
+bin/
+obj/

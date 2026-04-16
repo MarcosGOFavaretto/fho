@@ -71,44 +71,35 @@ btnEnviar.addEventListener('click', (event) => {
 });
 
 form.addEventListener('reset', (e) => {
-    let preenchido = false;
+    e.preventDefault();
 
     divErros.style.display = 'none';
 
     camposInputs.forEach(campo => {
-        if (campo.classList.contains('campo-invalido')) {
-            campo.classList.remove('campo-invalido');
-        }
+        campo.classList.remove('campo-invalido');
     });
 
-    camposInputs.forEach(c => {
-        if (c.value !== "" && c.type !== "checkbox") preenchido = true;
-        if (c.type === "checkbox" && c.checked) preenchido = true;
-    });
+    const temConteudo = Array.from(camposInputs).some(c => (c.type !== 'checkbox' && c.value !== "") || (c.type === 'checkbox' && c.checked));
 
-    if (preenchido) {
+    if (temConteudo) {
         divErros.style.display = 'block';
         divErros.innerHTML = `
                 <h3>Limpar formulário?</h3>
-                <button type="button" id="sim" style="background:#d9534f; color:white; padding:5px; margin-right:10px;">Pode crê, manda bala!</button>
-                <button type="button" id="nao" style="background:#5bc0de; color:white; padding:5px;">Lá ele</button>
+                <button type="button" id="sim" style="background:#d9534f; color:white; padding:5px; margin-right:10px; border:none; border-radius:4px; cursor:pointer;">Pode crê, manda bala!</button>
+                <button type="button" id="nao" style="background:#5bc0de; color:white; padding:5px; border:none; border-radius:4px; cursor:pointer;">Lá ele</button>
             `;
 
         document.getElementById('sim').addEventListener('click', () => {
             form.reset();
-
-            camposInputs.forEach(campo => {
-                if (campo.classList.contains('campo-invalido')) {
-                    campo.value = '';
-                }
-            });
-
+            camposInputs.forEach(c => c.value = '');
             divErros.style.display = 'none';
+            divErros.innerHTML = '';
             camposInputs.forEach(c => c.classList.remove('campo-invalido'));
         });
 
-        document.getElementById('nao', () => {
+        document.getElementById('nao').addEventListener('click', () => {
             divErros.style.display = 'none';
+            divErros.innerHTML = '';
         });
     }
 });

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Aluno | Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>Sistema de Registro Acadêmico</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="container">
+            <div id="divErros"></div>
+            
+            <form id="formCadastro" action="processar.php" method="POST">
+                <h2>Formulário de Ingresso</h2>
+                <p class="subtitle">Preencha todos os campos obrigatórios abaixo.</p>
+
+                <div class="campo">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required>
+                </div>
+
+                <div class="grid-2">
+                    <div class="campo">
+                        <label for="ra">RA (Registro Acadêmico)</label>
+                        <input type="text" id="ra" name="ra" placeholder="Apenas números" required>
+                    </div>
+                    <div class="campo">
+                        <label for="email">E-mail Insttucional</label>
+                        <input type="email" id="email" name="email" placeholder="nome@alunos.fho.edu.br" required>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="campo">
+                        <label for="curso">Curso</label>
+                        <select id="curso" name="curso" required>
+                            <option value="">Selecione seu curso...</option>
+                            <option value="Eng. Computação">Engenharia de Computação</option>
+                            <option value="Eng. Elétrica">Engenharia Elétrica</option>
+                            <option value="Ciência da Computação">Ciência da Computação</option>
+                            <option value="Sistemas de Informação">Sistemas de Informação</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label for="periodo">Período Atual</label>
+                        <select id="periodo" name="periodo" required>
+                            <option value="">Selecione o semestre...</option>
+                            <option value="1">1º Semestre</option>
+                            <option value="2">2º Semestre</option>
+                            <option value="3">3º Semestre</option>
+                            <option value="4">4º Semestre</option>
+                            <option value="5">5º Semestre</option>
+                            <option value="6">6º Semestre</option>
+                            <option value="7">7º Semestre</option>
+                            <option value="8">8º Semestre</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="campo-check">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="autorizacao" name="autorizacao">
+                        <span class="checkmark"></span>
+                        Autorizo o uso de dados para fins acadêmicos
+                    </label>
+                </div>
+
+                <div class="botoes">
+                    <button type="submit" id="btnEnviar">
+                        <i class="fas fa-paper-plane"></i> Finalizar Cadastro
+                    </button>
+                    <button type="reset" id="btnLimpar">
+                        <i class="fas fa-eraser"></i> Limpar
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>João Pedro Bortolin (114527) | Lucas Lopes Pultz (114752) | Marcos Favaretto (114425)</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

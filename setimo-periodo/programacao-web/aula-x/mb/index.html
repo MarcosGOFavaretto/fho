@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 30px;
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#erros {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 10px;
+    background: #ffe0e0;
+    border: 1px solid #ffaaaa;
+    border-radius: 5px;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Retirada</title>
+</head>
+<body>
+
+<h2>Retirada de Livro</h2>
+
+<form id="formRetirada" method="POST" action="processar.php">
+    
+    <label for="titulo">Título do Livro:</label><br>
+    <input type="text" id="titulo" name="titulo"><br><br>
+
+    <label for="nome">Nome do Aluno:</label><br>
+    <input type="text" id="nome" name="nome"><br><br>
+
+    <label for="email">E-mail:</label><br>
+    <input type="text" id="email" name="email"><br><br>
+
+    <button type="submit">Registrar</button>
+</form>
+
+<div id="erros" style="color: red;"></div>
+
+<script>
+document.getElementById("formRetirada").addEventListener("submit", function(event) {
+    
+    let erros = [];
+
+    let titulo = document.getElementById("titulo").value.trim();
+    let nome = document.getElementById("nome").value.trim();
+    let email = document.getElementById("email").value.trim();
+
+    if (titulo === "") {
+        erros.push("Título é obrigatório.");
+    }
+
+    if (nome.length < 3) {
+        erros.push("Nome deve ter pelo menos 3 caracteres.");
+    }
+
+    if (!email.includes("@gmail.com")) {
+        erros.push("E-mail inválido.");
+    }
+
+    let divErros = document.getElementById("erros");
+    divErros.innerHTML = "";
+
+    if (erros.length > 0) {
+        event.preventDefault(); 
+
+        erros.forEach(function(erro) {
+            divErros.innerHTML += "<p>" + erro + "</p>";
+        });
+    }
+});
+</script>
+
+</body>
+</html>

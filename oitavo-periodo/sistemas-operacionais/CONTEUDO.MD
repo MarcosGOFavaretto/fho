@@ -14,3 +14,10 @@ Os _drivers_ são _softwares_ que atuam como uma camada de abstração entre o S
 > **Jogo → Sistema Operacional → Driver da GPU → Placa de vídeo → Imagem na tela**  
 > 
 > O jogo solicita ao **SO** que uma imagem seja renderizada. O **driver da GPU** traduz essas solicitações para comandos que a placa de vídeo consegue entender e executar.
+
+# Aula 02
+
+> Notas no bloco de notas
+
+# Aula 03
+

@@ -841,3 +841,348 @@ Em aplicações que já utilizam injeção de dependência, normalmente é mais 
 > **Ressalva:** a unicidade do Singleton tradicional normalmente está limitada ao processo e ao contexto de carregamento em que a classe existe. Em aplicações distribuídas ou com múltiplas instâncias de servidor, cada processo pode possuir seu próprio Singleton. Portanto, ele não garante uma instância única para todo o sistema distribuído. No exemplo da fila de impressão, uma aplicação distribuída provavelmente precisaria de uma fila externa compartilhada, como um serviço de mensageria.
 
 **Conclusão:** antes de aplicar Singleton, devemos nos perguntar: *preciso realmente garantir uma única instância compartilhada, ou apenas disponibilizar o mesmo serviço para diferentes partes da aplicação?* No primeiro caso, Singleton pode ser adequado. No segundo, vale considerar a injeção de dependência com gerenciamento de ciclo de vida.
+
+# 7. MVC (padrão arquitetural)
+
+O **MVC (Model-View-Controller)** é um padrão arquitetural que separa uma aplicação interativa em três responsabilidades: **Modelo**, **Visão** e **Controlador**. Seu objetivo é permitir que a interface, as regras de negócio e a coordenação das ações evoluam com menor acoplamento.
+
+> **Importante:** o MVC não pertence ao catálogo de padrões de projeto do GoF. Ele trata da organização da aplicação, enquanto Strategy, Composite, Factory Method e Singleton tratam de problemas mais específicos entre classes e objetos.
+
+| Critério | MVC |
+|:-:|---|
+| **Categoria** | Arquitetural (apresentação e interação). |
+| **Objetivo** | Separar dados e regras de domínio, apresentação e coordenação das ações do usuário. |
+| **Problema** | A interface, as decisões de interação e as regras de negócio ficam misturadas, dificultando alterações, testes e reutilização. |
+| **Quando usar** | Quando a aplicação possui interação com usuários e a separação entre apresentação, coordenação e domínio melhora sua manutenção e evolução. |
+| **Quando não usar** | Quando a aplicação é muito pequena e a divisão em camadas introduz mais complexidade do que benefícios, ou quando outra arquitetura atende melhor ao tipo de interface. |
+| **Vantagens** | Separa responsabilidades, localiza mudanças, facilita testes, reutilização do domínio e substituição de interfaces. |
+| **Desvantagens** | Introduz classes e dependências adicionais; exige disciplina para evitar controladores com regras de negócio e camadas excessivamente acopladas. |
+
+Temos três componentes:
+- **Model (Modelo)**: representa o estado e as regras do domínio. Não deve depender da forma como as informações serão exibidas.
+- **View (Visão)**: apresenta informações ao usuário e recebe suas entradas. Não é responsável por executar as regras do domínio.
+- **Controller (Controlador)**: interpreta as ações do usuário, aciona o Modelo e coordena a resposta apresentada pela Visão.
+
+Na **variação didática utilizada nesta aula**, o Controlador conhece a Visão e o Modelo, enquanto essas duas camadas não se referenciam diretamente.
+
+**[INSERIR AQUI O SVG DO FLUXO MVC]**
+
+## 7.1. Exemplo: Jogo de um arqueiro
+
+Imagine um jogo de console no qual um personagem pode atacar, defender ou consultar suas informações. A interface recebe a opção digitada, o personagem executa as regras e uma mensagem é apresentada ao usuário.
+
+### 7.1.1. Código sem aplicar o padrão
+
+```csharp
+public class JogoSemCamadas
+{
+    private readonly string _nome = "Anderson";
+
+    public void Executar()
+    {
+        bool continuar = true;
+
+        while (continuar)
+        {
+            Console.WriteLine("1 - Atacar");
+            Console.WriteLine("2 - Defender");
+            Console.WriteLine("3 - Sair");
+            int opcao = int.Parse(Console.ReadLine()!);
+
+            if (opcao == 1)
+            {
+                Console.WriteLine($"{_nome} está atacando com arco...");
+                File.AppendAllText("log_jogo.txt", $"Atacou - {DateTime.Now}\n");
+            }
+            else if (opcao == 2)
+            {
+                Console.WriteLine($"{_nome} está defendendo com escudo...");
+            }
+            else if (opcao == 3)
+            {
+                continuar = false;
+            }
+        }
+    }
+}
+```
+
+**Utilização:**
+
+```csharp
+new JogoSemCamadas().Executar();
+```
+
+**Console (exemplo de interação):**
+
+```text
+1 - Atacar
+2 - Defender
+3 - Sair
+1
+Anderson está atacando com arco...
+```
+
+Essa classe concentra responsabilidades diferentes: apresenta o menu, lê o teclado, decide qual ação executar, contém a regra do ataque e grava o log. Se a interface for substituída por uma página web ou janela, será preciso alterar código que também contém regras do jogo. Além disso, testar o comportamento depende da execução do menu.
+
+### 7.1.2. Por que usar MVC?
+
+O **MVC** é adequado porque a interface, as regras do personagem e o controle das ações possuem motivos diferentes para mudar. Sem o padrão, essas responsabilidades ficam concentradas na mesma classe. Com o MVC, o **Modelo** executa as ações do arqueiro, a **Visão** recebe e apresenta informações e o **Controlador** coordena o fluxo entre ambos. Assim, mudanças na apresentação não precisam modificar as regras do personagem, e as regras podem ser testadas separadamente.
+
+### 7.1.3. Código após aplicar o padrão
+
+**Model — interfaces e implementações das armas:**
+
+```csharp
+// Model: contratos
+public interface IArmaAtaque
+{
+    string Atacar(string nome);
+}
+
+public interface IArmaDefesa
+{
+    string Defender(string nome);
+}
+
+// Model: implementações
+public class Arco : IArmaAtaque
+{
+    public string Atacar(string nome)
+    {
+        return $"{nome} está atacando com arco...";
+    }
+}
+
+public class Escudo : IArmaDefesa
+{
+    public string Defender(string nome)
+    {
+        return $"{nome} está defendendo com escudo...";
+    }
+}
+
+// Model: personagem e regras do domínio
+public class Arqueiro
+{
+    private readonly string _nome;
+    private readonly IArmaAtaque _ataque;
+    private readonly IArmaDefesa _defesa;
+
+    public Arqueiro(string nome, IArmaAtaque ataque, IArmaDefesa defesa)
+    {
+        _nome = nome;
+        _ataque = ataque;
+        _defesa = defesa;
+    }
+
+    public string Atacar() => _ataque.Atacar(_nome);
+    public string Defender() => _defesa.Defender(_nome);
+    public override string ToString() => $"{_nome} - Arqueiro";
+}
+```
+
+O `Arqueiro` não escreve no console e não conhece o menu. Ele executa operações do domínio e devolve seus resultados. As armas são recebidas por injeção de dependência, permitindo aplicar **Strategy** sem modificar o personagem.
+
+**View — entrada e apresentação:**
+
+```csharp
+public class JogoVisao
+{
+    public int Menu()
+    {
+        Console.WriteLine("1 - Atacar");
+        Console.WriteLine("2 - Defender");
+        Console.WriteLine("3 - Informações");
+        Console.WriteLine("4 - Sair");
+
+        return int.Parse(Console.ReadLine()!);
+    }
+
+    public void RenderizaMensagem(string mensagem)
+    {
+        Console.WriteLine(mensagem);
+    }
+}
+```
+
+A Visão sabe **como** receber uma opção e exibir uma mensagem, mas não sabe o significado da opção nem como funciona o ataque.
+
+**Controller — coordenação do fluxo:**
+
+```csharp
+public class JogoControlador
+{
+    private readonly JogoVisao _visao;
+    private readonly Arqueiro _arqueiro;
+
+    public JogoControlador(JogoVisao visao, Arqueiro arqueiro)
+    {
+        _visao = visao;
+        _arqueiro = arqueiro;
+    }
+
+    public void ExecutarJogo()
+    {
+        bool continuar = true;
+
+        while (continuar)
+        {
+            int opcao = _visao.Menu();
+
+            switch (opcao)
+            {
+                case 1:
+                    _visao.RenderizaMensagem(_arqueiro.Atacar());
+                    break;
+                case 2:
+                    _visao.RenderizaMensagem(_arqueiro.Defender());
+                    break;
+                case 3:
+                    _visao.RenderizaMensagem(_arqueiro.ToString());
+                    break;
+                case 4:
+                    continuar = false;
+                    break;
+                default:
+                    _visao.RenderizaMensagem("Opção inválida!");
+                    break;
+            }
+        }
+    }
+}
+```
+
+O Controlador interpreta a opção escolhida, mas **não implementa as regras de ataque ou defesa**. Essas regras continuam no Modelo.
+
+**Utilização — `Program.cs` (ponto de composição):**
+
+```csharp
+IArmaAtaque arco = new Arco();
+IArmaDefesa escudo = new Escudo();
+
+var arqueiro = new Arqueiro("Anderson", arco, escudo);
+var visao = new JogoVisao();
+var controlador = new JogoControlador(visao, arqueiro);
+
+controlador.ExecutarJogo();
+```
+
+**Console (exemplo de interação):**
+
+```text
+1 - Atacar
+2 - Defender
+3 - Informações
+4 - Sair
+1
+Anderson está atacando com arco...
+```
+
+> **Simplificação do exemplo:** o material original também injeta um `Logger` no Controlador e usa um Singleton no Modelo. O código acima omite o log para destacar a separação MVC. Da mesma forma que na aula, o menu usa `int.Parse()` sem validação; em um sistema real, seria preferível tratar entradas inválidas com `int.TryParse()`.
+
+## 7.2. Fluxo de uma ação
+
+Quando o usuário seleciona **1 — Atacar**, ocorre a seguinte sequência:
+
+1. **View:** `JogoVisao.Menu()` lê a opção e devolve `1`.
+2. **Controller:** `JogoControlador` interpreta a opção como uma solicitação de ataque.
+3. **Model:** `Arqueiro.Atacar()` aplica o comportamento do personagem e delega à arma escolhida.
+4. **Controller:** recebe o resultado da operação.
+5. **View:** `RenderizaMensagem()` apresenta a mensagem ao usuário.
+
+**[INSERIR AQUI O DIAGRAMA DE SEQUÊNCIA MVC]**
+
+O fluxo pode ser resumido como: **Usuário → Visão → Controlador → Modelo → Controlador → Visão → Usuário**.
+
+## 7.3. Onde cada mudança deve acontecer?
+
+| Mudança desejada | Camada responsável | O que tende a permanecer inalterado |
+|---|---|---|
+| Alterar textos, menu ou formatação das mensagens | View | Regras do Model |
+| Modificar as regras de ataque | Model | View e Controller |
+| Trocar o arco por uma espada | Composição no `Program.cs`, utilizando outra estratégia | `Arqueiro`, View e Controller |
+| Alterar a sequência de ações após uma escolha | Controller | Regras internas do Model |
+| Substituir o console por outra interface | View e montagem da aplicação | Regras de domínio |
+| Adicionar a ação **Descansar** | Pode exigir mudanças nas três camadas | Cada responsabilidade continua no seu lugar |
+
+**O MVC localiza as mudanças, mas não as elimina.** Uma funcionalidade nova pode exigir alterações no Modelo, na Visão e no Controlador. O benefício é saber onde cada responsabilidade deve ficar.
+
+## 7.4. Violações comuns do MVC
+
+**1. A Visão executa regras ou decide ações do domínio:**
+
+```csharp
+// Evitar: a View passa a decidir a ação do personagem.
+if (opcao == 1)
+{
+    Console.WriteLine(_arqueiro.Atacar());
+}
+```
+
+No modelo de MVC utilizado nesta aula, essa decisão pertence ao Controlador. Caso contrário, ela precisará ser repetida ao substituir a interface.
+
+**2. O Controlador concentra regras de negócio:**
+
+```csharp
+// Evitar: regra do jogo dentro do Controller.
+bool esquivou = new Random().Next(0, 2) == 1;
+if (esquivou)
+{
+    _visao.RenderizaMensagem("Esquivou e atacou!");
+}
+```
+
+A regra de esquiva pertence ao domínio, não à coordenação da interação. Um Controller com muitos cálculos, condições e decisões de negócio tende a ficar excessivamente complexo (*fat controller*).
+
+**3. O Modelo decide como apresentar informações:**
+
+```csharp
+// Evitar: o Model fica acoplado à interface de console.
+public string Atacar()
+{
+    Console.WriteLine("Atacando...");
+    return _ataque.Atacar(_nome);
+}
+```
+
+O Modelo deve devolver o resultado da operação; a Visão decide como apresentá-lo.
+
+**4. Criar três pastas e considerar a aplicação MVC:**
+
+Criar pastas `Modelo`, `Visao` e `Controlador` não garante separação de responsabilidades. O que importa é **como as classes dependem umas das outras e onde as regras são implementadas**.
+
+## 7.5. MVC e outros padrões
+
+| Padrão ou técnica | Aplicação no exemplo |
+|---|---|
+| **Strategy** | O `Arqueiro` utiliza `IArmaAtaque` e `IArmaDefesa`, permitindo variar armas sem alterar a classe do personagem. |
+| **Singleton** | Um `Logger` compartilhado pode atender diferentes componentes, como no projeto da aula. |
+| **Injeção de dependência** | `Arqueiro` e `JogoControlador` recebem suas dependências pelo construtor. |
+| **Factory Method** | Pode permitir que subclasses especializem a criação de armas sem alterar o fluxo que as utiliza. |
+| **Composite** | Pode representar combinações de ataques por uma interface comum, tratando ataques simples e compostos uniformemente. |
+
+**MVC não substitui esses padrões.** Ele organiza as responsabilidades da aplicação; os demais resolvem problemas específicos de criação, composição e comportamento dentro dessa arquitetura.
+
+## 7.6. MVC no ASP.NET Core
+
+A separação também aparece em aplicações web, mas as tecnologias mudam:
+
+| Responsabilidade | Exemplo em console | Exemplo em ASP.NET Core MVC |
+|---|---|---|
+| **View** | `JogoVisao`, com `Console.WriteLine()` | Arquivos Razor `.cshtml` |
+| **Controller** | `JogoControlador` | Classes `Controller` e seus métodos de ação |
+| **Model** | `Arqueiro` e classes das armas | Entidades de domínio, regras e serviços |
+| **Ponto de composição** | `Program.cs`, criando objetos manualmente | `Program.cs` e contêiner de injeção de dependência |
+
+**Atenção à variação do MVC:** a regra de que a View não conhece o Model descreve a versão didática adotada no PDF. Ela **não é universal**: no ASP.NET Core MVC, por exemplo, uma View pode receber um modelo de apresentação fortemente tipado (`@model`). O princípio essencial permanece sendo separar responsabilidades e evitar que a apresentação concentre regras do domínio.
+
+## 7.7. Quando realmente vale a pena?
+
+O MVC é especialmente útil quando a aplicação apresenta **interfaces e regras de negócio que precisam evoluir separadamente**. Ele tende a facilitar manutenção, testes e a troca de tecnologias de apresentação.
+
+Entretanto, separar tudo em camadas não garante qualidade. Um sistema pequeno pode ficar desnecessariamente complexo, e um Controller que concentra regras de negócio continua sendo problemático mesmo dentro de uma estrutura chamada MVC.
+
+> **Ressalva:** o MVC não exige uma estrutura física específica de pastas nem resolve automaticamente o acoplamento. O padrão depende da correta distribuição de responsabilidades. Também não impede que uma funcionalidade envolva mudanças em todas as camadas.
+
+**Conclusão:** antes de aplicar MVC, devemos nos perguntar: *a separação entre apresentação, coordenação e domínio ajudará a manter e evoluir esta aplicação?* Se sim, MVC é um candidato. O principal objetivo não é aumentar o número de classes, mas garantir que **cada responsabilidade esteja no lugar adequado**.
